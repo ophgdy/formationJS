@@ -53,12 +53,17 @@
             <div id="editor-form">
                 <form action="#" name="meme-form">
                     <h2>Titre</h2>
-                    <input type="text" name="titre" id="meme-titre">
+                    <input type="text" name="titre" id="meme-titre" placeholder="redige ton texte">
                     <br/>
+                    <br/>
+                    <label for="meme-image"><h2>Image</h2></label>
+                    <br>
+                    <select name="ImageID" id="meme-image">
+                        <option value="1">aucune image</option>
+                    </select>
                     <br/>
                     <h2>Texte</h2>
-                    <input type="text" name="text" id="meme-texte"
-                    >
+                    <input type="text" name="text" id="meme-texte" placeholder="txt">
                     <div class="flex-col">
                         <div>
                             <label for="meme-x">x</label><br />
@@ -68,6 +73,15 @@
                             <label for="meme-y">y</label><br/>
                             <input type="number" name="y" id="meme-y">
                         </div>
+                        <br>
+                        <hr>
+                        <h2>Décoration</h2>
+                        <input type="text" name="Décoration" id="Deco">
+                    </div>
+                    <br/>
+                    <div class="flex-col">
+                        <input class="btn btn-danger" type="reset" value="Annuller" id="Annuler">
+                        <button class="btn btn-primary" type="submit" value="Valider" id="Valider">Valider</button>
                     </div>
                 </form>
             </div>
