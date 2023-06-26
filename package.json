@@ -1,0 +1,12 @@
+{
+  "name": "formationjs",
+  "version": "1.0.0",
+  "description": "Formation Js 2023",
+
+  "scripts": {
+    "start": "npx lite-server"
+    }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
