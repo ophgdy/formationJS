@@ -11,8 +11,8 @@
   <body>
     <header>
         <div id="header-name">
-            Meme<span id="dot">.</span><span id="js">js</span></div>
-        <div id="theme">theme</div>
+            Zoo<span id="dot">.</span><span id="js">js</span></div>
+        <div id="theme">La singerie</div>
     </header>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
           <div class="container">
@@ -50,7 +50,27 @@
             <div id="editor-viewer">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Chimpanzee-Head.jpg" alt="">
             </div>
-            <div id="editor-form">section de saisie</div>
+            <div id="editor-form">
+                <form action="#" name="meme-form">
+                    <h2>Titre</h2>
+                    <input type="text" name="titre" id="meme-titre">
+                    <br/>
+                    <br/>
+                    <h2>Texte</h2>
+                    <input type="text" name="text" id="meme-texte"
+                    >
+                    <div class="flex-col">
+                        <div>
+                            <label for="meme-x">x</label><br />
+                            <input type="number" name="x" id="meme-x">
+                        </div>
+                        <div>
+                            <label for="meme-y">y</label><br/>
+                            <input type="number" name="y" id="meme-y">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </article>
     <footer>GAUDRY &copy;2023</footer>
