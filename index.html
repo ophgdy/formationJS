@@ -10,6 +10,7 @@
     />
     <link rel="stylesheet" href="/Style/style.css" />
     <!-- com.-->
+    <script src="/JS/values.js"></script>
     <script src="/JS/Meme.js"></script>
     <script src="/JS/Formulaire.js"></script>
     <script src="/JS/index.js"></script>
@@ -101,7 +102,13 @@
               x="0"
               y="0"
             />
-            <text x="10" y="40" id="mimile">
+            <text
+              x="10"
+              y="40"
+              font-style="italic"
+              font-weigth="900"
+              style="text-decoration: underline; fill: aqua"
+            >
               YO !
             </text>
           </svg>
@@ -131,10 +138,15 @@
                 <label for="meme-x">x</label><br />
                 <input type="number" name="x" id="meme-x" />
               </div>
+              <br /><br /><br />
               <div>
                 <label for="meme-y">y</label><br />
                 <input type="number" name="y" id="meme-y" />
               </div>
+              <br />
+              <br />
+              <div>Couleur: <input type="color" name="color" /></div>
+              
             </div>
             <br />
             <div class="center">
