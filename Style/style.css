@@ -1,9 +1,13 @@
+header{
+    display: flex
+}
 #header-name{
     color: darkslategrey;
     font-weight: 900;
     font-size: 32pt;
     text-shadow: 10px 20px 25px darkseagreen;
     padding-left: 20px;
+    flex-grow: 1;
 
 }
 #dot{
@@ -19,6 +23,7 @@
     font-size: 20pt;
     padding-left: 20px;
     font-weight: bold;
+    text-align: center;
 }
 footer{
     text-align:center
@@ -62,7 +67,12 @@ input[type="number"]{
     text-align: center;
 }
 #mimile{
-    color: floralwhite;
+    fill: floralwhite;
     font-size: 20px;
     font-weight: bold;
+}
+
+body.dark{
+    background-color: rgb(34, 32, 32);
+    color: white !important;
 }

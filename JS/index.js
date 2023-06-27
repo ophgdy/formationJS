@@ -12,6 +12,15 @@ function init(params) {
     footer.style.fontStyle='italic';
     footer.style.textDecoration='Underline';
 }
+/**
+ * changement d'état du theme
+ * @param {boolean} isDark etat du choix de theme dark/clear
+ */
+function changetheme(isDark) {
+    if(isDark){
+        document.body.className='dark'; }
+        else{document.body.className='';}
+    }
 document.addEventListener('DOMContentLoaded',function(evt){
     console.log(evt);
     init()
