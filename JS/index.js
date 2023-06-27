@@ -3,6 +3,7 @@
  * @returns {undefined} aucun retour
  */
 function init(params) {
+    InitMemeEditor()
   document
     .querySelector("#flexSwitchCheckDefault")
     .addEventListener("change", function (evt) {
