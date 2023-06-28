@@ -33,9 +33,10 @@ function InitMemeEditor() {
   // })
 
   form["imageId"].addEventListener("change", function (evt) {
-    currentMeme.ImageId = evt.target.value;
+    currentMeme.imageId = Number(evt.target.value);
     renderMeme();
   });
+  loadSelectImage(images);
 }
 function renderMeme(meme) {
   if (undefined === meme) {
@@ -43,23 +44,36 @@ function renderMeme(meme) {
   }
   var svg = document.querySelector("#editor-viewer svg");
   var texteElement = svg.querySelector("text");
-  texteElement.innerHTML=meme.text;
+  var imgElement = svg.querySelector("image");
+  var img = images.find(function (img) {
+    return img.id === meme.imageId;
+  });
+
+  imgElement.setAttribute("xlink:href", undefined!==img? img.url:"");
+
+  svg.setAttribute(
+  "viewBox",`0 0 ${undefined !== img? img.w:500} ${undefined !== img? img.h:500}`);
+  texteElement.innerHTML = meme.text;
   texteElement.style.fill = meme.color;
   texteElement.style.textDecoration = meme.underline ? "underline" : "none";
-  texteElement.setAttribute('x',meme.x);
-  texteElement.setAttribute('y',meme.y);
+  texteElement.setAttribute("x", meme.x);
+  texteElement.setAttribute("y", meme.y);
 }
 function loadSelectImage(image) {
-  var select = document.forms["meme-form"]['imageId'];
-  var optBase=document.createElement('option');
-  optBase.value="etry";
-  optBase.innerHTML='text visuel';
-  select.appendChild(optBase)
-  image.forEach(function(img){
-    var opt=optBase.cloneNode(true);
-    opt.value=img.id;
-    opt.innerHTML=img.titre;
+  var select = document.forms["meme-form"]["imageId"];
+  //vidange mon select
+  var children = select.children[0].cloneNode(true);
+  for (var index = 1; index < children.length; index++) {
+    children[index].remove();
+  }
+  var optBase = document.createElement("option");
+  optBase.value = "etry";
+  optBase.innerHTML = "text visuel";
+  select.appendChild(optBase);
+  image.forEach(function (img) {
+    var opt = optBase.cloneNode(true);
+    opt.value = img.id;
+    opt.innerHTML = img.titre;
     select.appendChild(opt);
-       
   });
 }
