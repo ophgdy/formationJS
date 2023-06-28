@@ -1,5 +1,6 @@
-import { handleRoute } from "./routeur.js";
+import { router } from "./routeur.js";
 
 document.addEventListener('DOMContentLoaded',(evt)=>{
-    handleRoute()
+    router.handleRoute()
+    console.log(router.currentRoute)
 })
