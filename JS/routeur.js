@@ -1,5 +1,6 @@
 import { initEditor } from "./editor.js";
 import { initHome } from "./js-view/home.js";
+import { initTumbnail } from "./js-view/thumbnail.js";
 /**
  * variable de config des routes
  */
@@ -7,7 +8,7 @@ const routeConfig = {
   route: [
     {
       path: "/thumbnail",
-      initialisation: undefined,
+      initialisation: initTumbnail,
       templateUrl: "/view/thumbnail.html",
     },
     {
@@ -21,7 +22,7 @@ const routeConfig = {
       templateUrl: "/view/templateQuiExistePasSurLeServeur.html",
     },
     {
-      path: "/editor",
+      path: /\/editor(\/(?<id>\d*))?/,
       initialisation: initEditor,
       templateUrl: "/view/editor.html",
     },
@@ -30,7 +31,9 @@ const routeConfig = {
 
 class Router {
   #currentRoute;
-  get currentRoute() {
+  #params={};
+  get params(){return this.#params;}
+  get currentRout() {
     return this.#currentRoute;
   }
   constructor() {
@@ -43,8 +46,24 @@ class Router {
    */
   handleRoute() {
     const pathName = location.pathname;
+    console.log(pathName)
+    this.#params={}
     this.#currentRoute = routeConfig.route.find(
-      (route) => route.path === pathName
+      (route) =>{ 
+        if (route.path instanceof RegExp){
+          //c'est une regex
+          const regReturn=route.path.exec(pathName)
+          if(null!==regReturn){
+            //ca a match
+            this.#params={...regReturn.groups}
+            return true;
+          }
+          else return false
+        }
+        else{
+          //c'est une chaine
+          return route.path=== pathName
+        }}
     );
     this.#istanciateRouteTemplete();
   }

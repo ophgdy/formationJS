@@ -1,5 +1,5 @@
 export const RESSOURCE_PATH = Object.freeze({
-  images: "/imgaes",
+  images: "/images",
   memes: "/memes",
 });
 const REST_ADR = "http://localhost:5679";

@@ -1,10 +1,17 @@
 import { Meme } from "./metier/Meme.js";
 import { ressource } from "./metier/Ressources.js";
+import { router } from "./routeur.js";
 
 let currentMeme;
 let currentImage;
 const VIEW_EDITOR_CSS_SELECTOR = "#editor";
 export const initEditor = () => {
+  console.log(router.params);
+  if (undefined !== router.params.id) {
+    currentMeme = ressources.meme.find(m => m.id == Number(router.params.id));
+  } else {
+    currentMeme = new Meme();
+  }
   initFormEvent();
   if (ressource.isLoaded) {
     initSelectImages();
@@ -18,6 +25,13 @@ export const initEditor = () => {
 };
 const initFormEvent = () => {
   var form = document.forms["meme-form"];
+  form.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+    currentMeme.save((memeSaved) => {
+      Ressources.memes.push(memeSaved);
+      router.changeRoute("/thumbnail");
+    });
+  });
   form["titre"].addEventListener("input", function (evt) {
     currentMeme.titre = evt.target.value;
     // renderMeme();
@@ -64,7 +78,7 @@ const initFormValues = () => {
   form["imageId"].value = currentMeme.imageId;
   form["color"].value = currentMeme.color;
 };
-const setCurrentMeme = (meme) => {
+const setCurrentMeme = (meme = currentMeme) => {
   currentMeme = meme;
   initFormValues();
   const images = ressource.images.find((im) => im.id === meme.imageId);
