@@ -2,32 +2,38 @@ import REST_ADR, { RESSOURCE_PATH } from "../Config.js";
 export class Ressources {
   #images = [];
   #memes = [];
-  #isLoaded=false
+  #isLoaded = false;
   get memes() {
     return this.#memes;
   }
   get images() {
     return this.#images;
   }
-  get isLoaded(){
-    return this.isLoaded;
+  get isLoaded() {
+    return this.#isLoaded;
   }
-  loadRessources() {
+  /**
+   *
+   * @param {Function} callback
+   */
+  loadRessources(callback) {
     const promiseImages = fetch(REST_ADR + RESSOURCE_PATH.images).then((resp) =>
       resp.json()
     );
     const promiseMemes = fetch(REST_ADR + RESSOURCE_PATH.memes).then((resp) =>
       resp.json()
     );
-    Promise.all([promiseImages, promiseMemes])
-    .then((array) => {
-      console.log(array)
+    Promise.all([promiseImages, promiseMemes]).then((array) => {
+      console.log(array);
       this.#images.splice(0);
-      this.#images.push(...array[0])
+      this.#images.push(...array[0]);
       this.#memes.splice(0);
-      this.#memes.push(...array[1])
-      this.#isLoaded=true
+      this.#memes.push(...array[1]);
+      this.#isLoaded = true;
+      if (undefined !== callback) {
+        callback(this);
+      }
     });
   }
 }
-export const ressource=new Ressources()
+export const ressource = new Ressources();
