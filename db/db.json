@@ -205,6 +205,21 @@
       "frameSizeX": 0,
       "frameSizeY": 0,
       "id": 7
+    },
+    {
+      "titre": "from WS",
+      "text": "JS c'est easy",
+      "x": 90,
+      "y": 40,
+      "fontWeight": "500",
+      "fontSize": 42,
+      "underline": false,
+      "italic": false,
+      "imageId": 8,
+      "color": "#9a4c4c",
+      "frameSizeX": 0,
+      "frameSizeY": 0,
+      "id": 8
     }
   ]
 }
